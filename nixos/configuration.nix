@@ -68,27 +68,123 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  # FIXME: Add the rest of your current configuration
+  # Define hostname
+  networking.hostName = "lichen";
+  # Define hostId for zfs
+  networking.hostId = "74e2c635";
+  networking.networkmanager.enable = true;
 
-  # TODO: Set your hostname
-  networking.hostName = "your-hostname";
+  time.timeZone = "America/Chicago";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  programs.hyprland.enable = true; # enable Hyprland
+
+  programs._1password.enable = true;
+  programs._1password-gui.enable = true;
+
+  programs.steam.enable = true;
+
+  programs.zsh.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    pulse.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    jack.enable = true;
+  };
+
+  services.libinput.enable = true;
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
-    # FIXME: Replace with your username
-    your-username = {
-      # TODO: You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "correcthorsebatterystaple";
+    hans = {
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqaem9ZdmLSCHtGqWBVPN7jnwQSfeHmJISYD0myw5/L4RdI2fSatxcQoZoP0htcpsxAPa+Jnj2MTPX1ZIe4F+wQd8kBp/Tpw3mLbQkEqo2U29bRC660FfJVsSi0Jx/GXu1B11QBjNQgH+XfEqoEA+vn9IEClIl/1eS3/aO85an6UvPxgWnBesx+CXbIMbvSNNjvLD5NF2gCPlPI4SHqBCC1dAviavdgAGkjVQ3sqrXKQifLeD73Cu0qJAOGGjyq2HfLP+jQmxEXn4z2vCYr7HM0VzPnoz72HgBbYTP/IQOgGEKxLMK/wExel77Z2e/m72UQBZRXCYbYH1KVzWpH5/7o0KRS9LAmJf+G1UpTsaRHiCaihcAtNMTtgW855YIoXjZjBJyM9zCccA3qICwpAuvsXyl5eCoyKWQaXmNuhmTyJw5OPcBYJWB0E/AUKWIzfufg+/cFce7df1gpFmL3A9IcaO58cnjZt7UZ5d5FgdysQkPi0bieFZUfq2owW4KlhE="
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0LLilDa9B86VVViCaEdQeuOEUx/y0WK71VUqCwcxGhRST0E1xWEgGZGRqUBr26Ib3MTIBcOIIsKQ9Qy4fb6NY+MQVUZgtVrcYMOGvNiObVCns+az7KngzCLc/eN5bzZV976d9WygrvI1AHZdK/kCzQ05ZMBVM5XHlNUrat6/KRzYdLArwn1FlVyVY7C63K6p19FbouwYwO/Ywpa/trq7Vi6d+h8aRRj8rihZhSILF+/lcvb+n7TzQj5LSKd5PYWBUbMvi2ob9knnVW5Un7qaB/pc1t6brDC41XYJFmqKNd2I0PupKQuCM4qxuT6fZuJPAwP4pPg/ZE47YlCkGWLKarwpU+AydBVqUEEX+rhbBYFurQ7WjXTKmKIMEn3qzdDgE4bKq2NKBX6NtdUN+VKVEuCS8F51iQYzI9uMKk9coPVKKSgdQypzKhyons5JP3mbTLuwZTFotoPj0cf0WhLQqABV5GZMHKQFKbLe30qvpfuP+AfqKcYnZO2g/g/cUnc0="
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICEamsn2ceY2BwGEnnXMDaTpP1i/nW1893BrVC+uhWGs"
       ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel" "networkmanager"];
     };
   };
+
+  users.defaultUserShell = pkgs.zsh;
+  # This allows systemd completion in zsh
+  environment.pathsToLink = ["/share/zsh"];
+
+  environment.variables = {
+    GTK_THEME = "WhiteSur-Dark";
+    XCURSOR_THEME = "WhiteSur-Dark";
+    XCURSOR_SIZE = "24";
+    HYPRCURSOR_THEME = "WhiteSurDark";
+    HYPRCURSOR_SIZE = "24";
+  };
+
+  environment.systemPackages = with pkgs; [
+    # Core system tools
+    bc
+    curl
+    git
+    htop
+    nmap
+    tree
+    unzip
+    wget
+    zip
+
+    # Development tools
+    lazygit
+    neovim
+    tmux
+
+    # Shell and utilities
+    bat
+    blueman
+    brightnessctl
+    ffmpeg
+    fzf
+    lsd
+    nh
+    pwvucontrol
+    ripgrep
+    tmux
+    waybar
+    yazi
+    zoxide
+    zsh
+
+    # Resources
+    whitesur-gtk-theme
+
+    # Applications
+    discord
+    firefox
+    kitty
+    wofi
+
+    # Media and downloads
+    gimp3
+    mpv
+    playerctl
+    sxiv
+    yt-dlp
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.bitstream-vera-sans-mono
+    nerd-fonts.departure-mono
+    nerd-fonts.dejavu-sans-mono
+  ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
@@ -98,10 +194,14 @@
       # Opinionated: forbid root login through SSH.
       PermitRootLogin = "no";
       # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
       PasswordAuthentication = false;
     };
   };
+
+  # Copy the NixOS configuration file and link it from the resulting system
+  # (/run/current-system/configuration.nix). This is useful in case you
+  # accidentally delete configuration.nix.
+  system.copySystemConfiguration = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
