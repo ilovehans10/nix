@@ -160,6 +160,8 @@
     firefox
     kitty
     wofi
+    rustup
+    gcc
 
     # Media and downloads
     gimp3
