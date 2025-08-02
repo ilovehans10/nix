@@ -1,13 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -18,7 +11,6 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    "$HOME/Documents/flakes/neovim/flake.nix"
   ];
 
   nixpkgs = {
@@ -59,21 +51,18 @@
 
   programs.neovim = {
     enable = true;
-    extraPackages = with pkgs;
-      [
-        # Dependent packages used by default plugins
-        doq
-        sqlite
-      ] ++ optionals cfg.withBuildTools [
-        cargo
-        clang
-        cmake
-        gcc
-        gnumake
-        npm
-        pkg-config
-        yarn
-      ];
+    extraPackages = with pkgs; [
+      # Dependent packages used by default plugins
+      doq
+      sqlite
+      cargo
+      clang
+      cmake
+      gcc
+      gnumake
+      pkg-config
+      yarn
+    ];
     extraLuaPackages = ls:
       with ls; [
         luarocks
@@ -132,8 +121,8 @@
       vi = "nvim";
       vim = "nvim";
       vimdiff = "nvim -d";
-      vimrc = "nvim ~/.config/nvim/init.lua";
-      zshrc = "nvim ~/.config/zsh/.zshrc";
+      vimrc = "nvim $HOME/.config/nvim/init.lua";
+      zshrc = "nvim $HOME/.config/zsh/.zshrc";
 
       # Git and dotfiles
       lg = "lazygit";
@@ -270,8 +259,7 @@
         # Cleanup
         unset FRESHSHELL
       '';
-    in
-      lib.mkMerge [zshConfigEarlyInit zshConfig];
+    in lib.mkMerge [ zshConfigEarlyInit zshConfig ];
 
     # Local variables for different configurations
     localVariables = {
@@ -329,7 +317,7 @@
       set-option -g display-time 4000 # make tmux notifications last 4 seconds
       set-option -g allow-passthrough on
 
-      bind-key r source-file ~/.config/tmux/tmux.conf # reload tmux config on <C-Space>r
+      bind-key r source-file $HOME/.config/tmux/tmux.conf # reload tmux config on <C-Space>r
 
       bind-key -T copy-mode-vi v send -X begin-selection
       bind-key -T copy-mode-vi V send -X select-line

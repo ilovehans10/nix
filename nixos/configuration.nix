@@ -1,13 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -49,8 +42,7 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
       # Enable flakes and new 'nix' command
@@ -64,7 +56,7 @@
     channel.enable = false;
 
     # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
@@ -111,13 +103,13 @@
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0LLilDa9B86VVViCaEdQeuOEUx/y0WK71VUqCwcxGhRST0E1xWEgGZGRqUBr26Ib3MTIBcOIIsKQ9Qy4fb6NY+MQVUZgtVrcYMOGvNiObVCns+az7KngzCLc/eN5bzZV976d9WygrvI1AHZdK/kCzQ05ZMBVM5XHlNUrat6/KRzYdLArwn1FlVyVY7C63K6p19FbouwYwO/Ywpa/trq7Vi6d+h8aRRj8rihZhSILF+/lcvb+n7TzQj5LSKd5PYWBUbMvi2ob9knnVW5Un7qaB/pc1t6brDC41XYJFmqKNd2I0PupKQuCM4qxuT6fZuJPAwP4pPg/ZE47YlCkGWLKarwpU+AydBVqUEEX+rhbBYFurQ7WjXTKmKIMEn3qzdDgE4bKq2NKBX6NtdUN+VKVEuCS8F51iQYzI9uMKk9coPVKKSgdQypzKhyons5JP3mbTLuwZTFotoPj0cf0WhLQqABV5GZMHKQFKbLe30qvpfuP+AfqKcYnZO2g/g/cUnc0="
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICEamsn2ceY2BwGEnnXMDaTpP1i/nW1893BrVC+uhWGs"
       ];
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = [ "wheel" "networkmanager" ];
     };
   };
 
   users.defaultUserShell = pkgs.zsh;
   # This allows systemd completion in zsh
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   environment.variables = {
     GTK_THEME = "WhiteSur-Dark";
