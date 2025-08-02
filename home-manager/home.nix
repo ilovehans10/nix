@@ -52,11 +52,35 @@
   };
 
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    extraPackages = with pkgs;
+      [
+        # Dependent packages used by default plugins
+        doq
+        sqlite
+      ] ++ optionals cfg.withBuildTools [
+        cargo
+        clang
+        cmake
+        gcc
+        gnumake
+        npm
+        pkg-config
+        yarn
+      ];
+    extraLuaPackages = ls:
+      with ls; [
+        luarocks
+        # required by 3rd/image.nvim
+        magick
+      ];
+  };
 
   programs.zsh = {
     enable = true;
