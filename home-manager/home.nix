@@ -361,7 +361,7 @@
     systemd.enable = true;
   };
 
-  # xdg user dire setup
+  # xdg user dir setup
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
