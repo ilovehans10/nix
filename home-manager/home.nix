@@ -271,7 +271,7 @@
   # FZF integration
   programs.fzf = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
   };
 
   programs.git = {
