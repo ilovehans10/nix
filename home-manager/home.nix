@@ -279,8 +279,8 @@
     userEmail = "hanandlia@gmail.com";
     userName = "Hans Larsson";
     extraConfig = ''
-      Host *
-      	IdentityAgent ~/.1password/agent.sock'';
+      [Host "*"]
+      	IdentityAgent = "~/.1password/agent.sock"'';
   };
 
   # Zoxide integration
