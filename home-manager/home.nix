@@ -291,9 +291,17 @@
     enable = true;
     userEmail = "hanandlia@gmail.com";
     userName = "Hans Larsson";
-    extraConfig = ''
-      [Host "*"]
-      	IdentityAgent = "~/.1password/agent.sock"'';
+    extraConfig = {
+      host."*" = { "IdentityAgent" = " ~/.1password/agent.sock "; };
+      merge.conflictStyle = "diff3";
+      push.default = "current"; # Match modern push behavior
+      color.ui = "auto";
+      diff = {
+        tool = "vimdiff";
+        submodule = "log";
+      };
+      difftool.prompt = false;
+    };
   };
 
   # Zoxide integration
