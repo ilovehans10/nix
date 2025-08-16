@@ -131,7 +131,8 @@
     bc
     curl
     git
-    htop
+    home-manager
+    bottom
     nmap
     tree
     unzip
