@@ -95,6 +95,13 @@
 
   services.libinput.enable = true;
 
+  security.sudo = {
+    enable = true;
+    extraConfig = ''
+      Defaults        timestamp_timeout=-1
+    '';
+  };
+
   users.users = {
     hans = {
       isNormalUser = true;
