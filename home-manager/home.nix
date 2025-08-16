@@ -74,6 +74,7 @@
       gnumake
       pkg-config
       yarn
+      nodejs_24
     ];
     extraLuaPackages = ls:
       with ls; [
