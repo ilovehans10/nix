@@ -394,26 +394,6 @@
   # swww setup
   services.swww.enable = true;
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = pkgs.hyprland;
-    systemd = {
-      enable = true;
-      enableXdgAutostart = true;
-      variables = [ "--all" ];
-    };
-    xwayland = { enable = true; };
-    settings = {
-      cursor = {
-        sync_gsettings_theme = true;
-        no_hardware_cursors = 2; # change to 1 if want to disable
-        enable_hyprcursor = false;
-        warp_on_change_workspace = 2;
-        no_warps = true;
-      };
-    };
-  };
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
