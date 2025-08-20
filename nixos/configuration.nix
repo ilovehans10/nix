@@ -173,6 +173,7 @@
 
     # Media and downloads
     gimp3
+    imagemagick
     mpv
     playerctl
     sxiv
