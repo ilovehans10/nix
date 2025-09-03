@@ -94,6 +94,11 @@
     # Set vi mode
     defaultKeymap = "viins";
 
+    dirHashes = {
+      bitburner = "$HOME/Games/typescript-template/src/";
+      nix = "$HOME/Documents/nix-full/";
+    };
+
     # History configuration
     history = {
       size = 10000;
