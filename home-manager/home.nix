@@ -132,6 +132,10 @@
     #  "RC_EXPAND_PARAM"
     #];
 
+    envExtra = ''
+      ZVM_INIT_MODE="sourcing"
+    '';
+
     # Aliases
     shellAliases = {
       # Text editors
