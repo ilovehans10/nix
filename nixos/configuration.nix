@@ -167,6 +167,7 @@
     firefox
     gcc
     kitty
+    localsend
     rustup
     wofi
 
