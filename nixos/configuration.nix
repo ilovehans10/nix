@@ -127,10 +127,10 @@
   environment.systemPackages = with pkgs; [
     # Core system tools
     bc
+    bottom
     curl
     git
     home-manager
-    bottom
     nmap
     tree
     unzip
@@ -146,6 +146,7 @@
     bat
     blueman
     brightnessctl
+    dig
     ffmpeg
     fzf
     lsd
@@ -164,10 +165,10 @@
     # Applications
     discord
     firefox
-    kitty
-    wofi
-    rustup
     gcc
+    kitty
+    rustup
+    wofi
 
     # Media and downloads
     gimp3
