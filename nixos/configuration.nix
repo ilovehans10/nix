@@ -179,6 +179,7 @@
     playerctl
     sxiv
     yt-dlp
+    zathura
   ];
 
   fonts.packages = with pkgs; [
