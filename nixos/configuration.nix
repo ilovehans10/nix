@@ -147,6 +147,7 @@
     blueman
     brightnessctl
     dig
+    exiftool
     ffmpeg
     fzf
     lsd
