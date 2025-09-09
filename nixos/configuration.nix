@@ -68,6 +68,15 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # Add kmscon for a more dynamic tty
+  services.kmscon = {
+    enable = true;
+    fonts = [{
+      name = "DejaVuSansM Nerd Font Mono";
+      package = pkgs.nerd-fonts.dejavu-sans-mono;
+    }];
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
