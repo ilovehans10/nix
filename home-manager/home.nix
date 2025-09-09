@@ -404,6 +404,9 @@
   # swww setup
   services.swww.enable = true;
 
+  # enable sway-nc for notifications
+  services.swaync.enable = true;
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
