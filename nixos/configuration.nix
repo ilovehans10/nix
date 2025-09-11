@@ -135,6 +135,12 @@
     HYPRCURSOR_SIZE = "24";
   };
 
+  xdg.mime.defaultApplications = {
+    "image/jpg" = "sxiv.desktop";
+    "image/jpeg" = "sxiv.desktop";
+    "image/png" = "sxiv.desktop";
+  };
+
   environment.systemPackages = with pkgs; [
     # Core system tools
     bc
