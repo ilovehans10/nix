@@ -102,6 +102,8 @@
 
   services.libinput.enable = true;
 
+  services.fwupd.enable = true;
+
   security.sudo = {
     enable = true;
     extraConfig = ''
