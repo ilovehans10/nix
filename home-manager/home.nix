@@ -97,6 +97,7 @@
     dirHashes = {
       bitburner = "$HOME/Games/typescript-template/src/";
       nix = "$HOME/Documents/nix-full/";
+      wallpapers = "$HOME/Pictures/wallpapers/";
     };
 
     # History configuration
