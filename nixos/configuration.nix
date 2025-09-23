@@ -77,8 +77,13 @@
     }];
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    # Disable xterm
+    excludePackages = with pkgs; [ xterm ];
+
+    # Enable the X11 windowing system.
+    enable = true;
+  };
 
   programs.hyprland.enable = true; # enable Hyprland
 
