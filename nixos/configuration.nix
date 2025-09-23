@@ -106,6 +106,8 @@
   };
 
   services.libinput.enable = true;
+  services.libinput.touchpad.disableWhileTyping = false;
+  services.libinput.mouse.disableWhileTyping = false;
 
   services.fwupd.enable = true;
 
