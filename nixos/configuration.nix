@@ -85,6 +85,33 @@
     enable = true;
   };
 
+  systemd.services.common-tmux-sessions = {
+    description = "Used to start all tmux session that I commonly uses";
+    # Path to executables or scripts used by the service
+    # This ensures the necessary binaries are available in the service's environment
+    path = [ pkgs.tmux ];
+
+    # The command to execute when the service starts
+    script = ''
+      ${pkgs.tmux}/bin/tmux new -ds server
+      ${pkgs.tmux}/bin/tmux new -ds hans
+      ${pkgs.tmux}/bin/tmux new -ds nix -c ~/Documents/nix-full
+      ${pkgs.tmux}/bin/tmux new -ds bitburner -c ~/Games/typescript-template/src
+      ${pkgs.tmux}/bin/tmux new -ds school -c ~/Documents/college
+      ${pkgs.tmux}/bin/tmux new -ds super
+    '';
+
+    # Standard systemd service options can be set in serviceConfig
+    serviceConfig = {
+      Type = "forking"; # Or "forking", "oneshot", etc.
+      User = "hans"; # Run as a specific user
+      Restart = "on-failure"; # How the service should restart
+    };
+
+    wantedBy =
+      [ "multi-user.target" ]; # Start when the system reaches multi-user state
+  };
+
   programs.hyprland.enable = true; # enable Hyprland
 
   programs._1password.enable = true;
