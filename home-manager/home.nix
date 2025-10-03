@@ -411,7 +411,13 @@
   };
 
   # swww setup
-  services.swww.enable = true;
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [ "~/Pictures/wallpaper.jpg" ];
+      wallpaper = [ ",~/Pictures/wallpaper.jpg" ];
+    };
+  };
 
   # enable sway-nc for notifications
   services.swaync.enable = true;
