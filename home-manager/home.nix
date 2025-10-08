@@ -380,12 +380,6 @@
     systemd.enable = true;
   };
 
-  # xdg user dir setup
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-  };
-
   # swww setup
   services.hyprpaper = {
     enable = true;
