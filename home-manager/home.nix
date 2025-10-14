@@ -69,6 +69,7 @@
       doq
       sqlite
       cargo
+      dotnetCorePackages.sdk_9_0
       clang
       cmake
       gcc
