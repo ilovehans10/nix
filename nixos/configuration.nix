@@ -218,6 +218,7 @@
     gcc
     kitty
     localsend
+    qalculate-qt
     rustup
     wofi
 
