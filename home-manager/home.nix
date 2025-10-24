@@ -70,6 +70,8 @@
       sqlite
       cargo
       dotnetCorePackages.sdk_9_0
+      unstable.stylua
+      lua-language-server
       clang
       cmake
       gcc
