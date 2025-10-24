@@ -115,7 +115,10 @@
   programs.hyprland.enable = true; # enable Hyprland
 
   programs._1password.enable = true;
-  programs._1password-gui.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "hans" ];
+  };
 
   programs.steam.enable = true;
 
