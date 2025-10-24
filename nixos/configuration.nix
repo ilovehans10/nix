@@ -136,6 +136,10 @@
 
   services.fwupd.enable = true;
 
+  services.fprintd.enable = true;
+
+  security.polkit.enable = true;
+
   security.sudo = {
     enable = true;
     extraConfig = ''

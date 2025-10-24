@@ -390,6 +390,8 @@
     };
   };
 
+  services.hyprpolkitagent.enable = true;
+
   # enable sway-nc for notifications
   services.swaync.enable = true;
 
