@@ -59,7 +59,7 @@
   # Add stuff for your user as you see fit:
   # home.packages = with pkgs; [ steam ];
 
-  # Enable home-manager and git
+  # Enable home-manager
   programs.home-manager.enable = true;
 
   programs.neovim = {
