@@ -3,6 +3,7 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
+    ../modules/nixos
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
