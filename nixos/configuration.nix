@@ -211,7 +211,6 @@
     nh
     pwvucontrol
     ripgrep
-    tmux
     waybar
     yazi
     zoxide

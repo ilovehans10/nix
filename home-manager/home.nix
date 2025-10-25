@@ -315,7 +315,6 @@
     historyLimit = 100000;
     keyMode = "vi";
     terminal = "screen-256color";
-    #plugins = []
     prefix = "C-Space";
     sensibleOnTop = true;
     plugins = with pkgs; [
