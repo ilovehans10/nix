@@ -121,7 +121,10 @@
     polkitPolicyOwners = [ "hans" ];
   };
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraPackages = with pkgs; [ nss ];
+  };
 
   programs.zsh.enable = true;
 
