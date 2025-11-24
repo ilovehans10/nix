@@ -22,6 +22,7 @@
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
+      inputs.rust-overlay.overlays.default
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
@@ -200,6 +201,7 @@
     # Development tools
     lazygit
     neovim
+    rust-bin.stable.latest.default
     tmux
 
     # Shell and utilities
