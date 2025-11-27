@@ -227,7 +227,6 @@
     # Applications
     discord
     firefox
-    gcc
     kitty
     localsend
     qalculate-qt
