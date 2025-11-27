@@ -212,6 +212,8 @@
     exiftool
     ffmpeg
     fzf
+    hyprpicker
+    hyprshot
     lsd
     nh
     pwvucontrol
