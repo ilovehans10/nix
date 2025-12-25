@@ -79,6 +79,7 @@
       pkg-config
       yarn
       nodejs_24
+      rust-analyzer
     ];
     extraLuaPackages = ls:
       with ls; [
