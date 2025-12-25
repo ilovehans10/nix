@@ -88,7 +88,7 @@
   };
 
   systemd.services.common-tmux-sessions = {
-    description = "Used to start all tmux session that I commonly uses";
+    description = "Used to start all tmux session that I commonly use";
     # Path to executables or scripts used by the service
     # This ensures the necessary binaries are available in the service's environment
     path = [ pkgs.tmux ];
