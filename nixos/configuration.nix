@@ -233,7 +233,6 @@
     kitty
     localsend
     qalculate-qt
-    rustup
     wofi
 
     # Media and downloads
