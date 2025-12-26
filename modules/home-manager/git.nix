@@ -1,9 +1,9 @@
 { lib, pkgs, ... }: {
   programs.git = {
     enable = true;
-    userEmail = "hanandlia@gmail.com";
-    userName = "Hans Larsson";
-    extraConfig = {
+    settings = {
+      user.email = "hanandlia@gmail.com";
+      user.name = "Hans Larsson";
       gpg = { format = "ssh"; };
       "gpg \"ssh\"" = {
         program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
