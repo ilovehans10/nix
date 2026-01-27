@@ -25,6 +25,8 @@
       credential.helper = "cache --timeout=7200";
       log.decorate = "full"; # Show branch/tag info in git log
       log.date = "iso"; # ISO 8601 date format
+      advice.defaultBranchName =
+        false; # Hide warning for git default branch name
     };
   };
 }
