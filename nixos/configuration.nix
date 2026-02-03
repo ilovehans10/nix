@@ -224,7 +224,6 @@
     kitty
     localsend
     qalculate-qt
-    wofi
 
     # Media and downloads
     gimp3
