@@ -76,6 +76,7 @@
       cmake
       gcc
       gnumake
+      powershell
       pkg-config
       yarn
       nodejs_24
