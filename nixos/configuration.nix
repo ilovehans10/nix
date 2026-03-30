@@ -4,6 +4,8 @@
   # You can import other NixOS modules here
   imports = [
     ../modules/nixos
+    inputs.stylix.nixosModules.stylix
+    ../modules/stylix.nix
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
