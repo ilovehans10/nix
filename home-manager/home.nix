@@ -64,34 +64,6 @@
   # Enable home-manager
   programs.home-manager.enable = true;
 
-  programs.neovim = {
-    enable = true;
-    extraPackages = with pkgs; [
-      # Dependent packages used by default plugins
-      doq
-      sqlite
-      cargo
-      dotnetCorePackages.sdk_9_0
-      unstable.stylua
-      lua-language-server
-      clang
-      cmake
-      gcc
-      gnumake
-      powershell
-      pkg-config
-      yarn
-      nodejs_24
-      rust-analyzer
-    ];
-    extraLuaPackages = ls:
-      with ls; [
-        luarocks
-        # required by 3rd/image.nvim
-        magick
-      ];
-  };
-
   programs.zsh = {
     enable = true;
     autocd = true;
