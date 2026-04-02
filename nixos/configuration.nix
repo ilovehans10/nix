@@ -207,6 +207,7 @@
     fzf
     hyprpicker
     hyprshot
+    jq
     lsd
     nh
     pwvucontrol
