@@ -65,7 +65,6 @@ keyset("i", "kk", "<ESC>")
 -- allow inserting line before/after current
 keyset("n", "<leader>j", ":set paste<CR>m`o<ESC>``:set nopaste<CR>") -- insert line after current
 keyset("n", "<leader>k", ":set paste<CR>m`O<ESC>``:set nopaste<CR>") -- insert line before current
-keyset("n", "<leader>i", "<Plug>IndentGuidesToggle") -- insert line before current
 keyset("n", "<leader>w", "g<C-g>") -- show word count for buffer
 keyset("v", "<leader>w", "g<C-g>") -- show word count for visual selection
 keyset("n", "<leader>ev", (":tab drop " .. vim.fn.expand("<sfile>:p") .. "<CR>"))
@@ -80,12 +79,8 @@ keyset("n", "<leader>h", ':let @/=""<CR>')
 keyset("n", "<leader>H", ":set hlsearch!<CR>")
 keyset("n", "<leader>t", ":vsplit term://zsh<CR>")
 keyset("n", "<leader>T", ":vert resize 75<CR>")
-if vim.v.version >= 910 then
-	keyset("ca", "help", "vert help") -- opens help in vertical windows
-	keyset("ca", "w!!", "w !sudo tee > /dev/null %") -- allow saving of files with sudo when needed
-else
-	keyset("c", "w!!", "w !sudo tee > /dev/null %") -- allow saving of files with sudo when needed
-end
+keyset("ca", "help", "vert help") -- opens help in vertical windows
+keyset("ca", "w!!", "w !sudo tee > /dev/null %") -- allow saving of files with sudo when needed
 
 keyset("t", "<ESC><ESC>", "<C-\\><C-n>")
 
@@ -124,12 +119,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	command = [[ let save_view = winsaveview() | %s/\s\+$//e | call winrestview(save_view) ]],
 })
 
-vim.api.nvim_create_augroup("setshiftwidth", {})
-vim.api.nvim_create_autocmd(
-	"Filetype",
-	{ pattern = "*.py", group = "setshiftwidth", command = [[ setlocal shiftwidth=2 ]] }
-)
-
 vim.api.nvim_create_augroup("changedirectory", {})
 vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", group = "changedirectory", command = [[ silent! lcd %:p:h ]] })
 
@@ -146,7 +135,6 @@ vim.g.undotree_WindowLayout = 3
 keyset("n", "|", "<cmd>UndotreeToggle<cr>")
 
 -- neo-tree
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 require("neo-tree").setup({
