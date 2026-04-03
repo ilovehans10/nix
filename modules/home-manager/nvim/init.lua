@@ -15,11 +15,9 @@ option.foldenable = false
 option.cursorline = true -- highlight the cursorline based on cursorlineopt
 option.cursorlineopt = "number" -- highlight the linenumber of the cursorline
 option.completeopt = { "menu", "menuone", "noselect" } -- show selection menus
-option.encoding = "utf-8" -- set default file encoding
 option.backspace = { "indent", "eol", "start" } -- enable all backspacing in insert mode
 option.relativenumber = true -- show the line numbers relative to the cursor
 option.number = true -- show the line number of the cursor relative to the file
-option.wildmenu = true -- show options for commands
 option.timeout = true -- don't wait forever for keys that are part of remaps
 option.timeoutlen = 1000 -- wait for 1 second for the next key in a remap
 option.ttimeoutlen = 100 -- wait for .1 seconds for key escape codes to be typed eg. <Right> = ^[[C
@@ -52,10 +50,6 @@ keyset("i", "<C-h>", "<C-\\><C-N><C-w>h")
 keyset("i", "<C-j>", "<C-\\><C-N><C-w>j")
 keyset("i", "<C-k>", "<C-\\><C-N><C-w>k")
 keyset("i", "<C-l>", "<C-\\><C-N><C-w>l")
-keyset("n", "<C-h>", "<C-w>h")
-keyset("n", "<C-j>", "<C-w>j")
-keyset("n", "<C-k>", "<C-w>k")
-keyset("n", "<C-l>", "<C-w>l")
 keyset("t", "<C-h>", "<C-\\><C-N><C-w>h")
 keyset("t", "<C-j>", "<C-\\><C-N><C-w>j")
 keyset("t", "<C-k>", "<C-\\><C-N><C-w>k")
@@ -80,7 +74,6 @@ keyset("n", "<leader>ep", "<CMD>tab drop ~/.config/zsh/.zprofile<CR>")
 keyset("n", "<leader>et", "<CMD>tab drop ~/.config/zsh/tips<CR>")
 keyset("n", "<leader>s", ":sm///g<Left><Left>")
 keyset("n", "<leader>S", ":%sm///g<Left><Left>")
-keyset("n", "<leader>f", ":%! rustfmt<CR>")
 keyset("n", "<leader>z", ":set spell!<CR>")
 keyset("n", "<leader>Z", "1z=")
 keyset("n", "<leader>h", ':let @/=""<CR>')
@@ -147,9 +140,6 @@ vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", group = "changedirector
 
 -- catppuccin — set colorscheme first so other plugins inherit the palette
 vim.cmd.colorscheme("catppuccin-mocha")
-
--- rust.vim
-vim.g.rustfmt_autosave = 1
 
 -- undotree
 vim.g.undotree_WindowLayout = 3
