@@ -4,7 +4,7 @@
     autoEnable = false;
     enableReleaseChecks = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    image = /home/hans/Pictures/wallpaper.jpg;
+    image = ../assets/wallpapers/pixel/wallhaven-831wv2.jpg;
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.dejavu-sans-mono;

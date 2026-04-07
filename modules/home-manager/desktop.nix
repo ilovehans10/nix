@@ -1,16 +1,21 @@
-{ ... }: {
+{ config, ... }: {
   # Waybar setup
   programs.waybar = {
     enable = true;
     systemd.enable = true;
   };
 
+  # wallpaper collection symlink
+  home.file."Pictures/wallpapers" = {
+    source = ../../assets/wallpapers;
+  };
+
   # wallpaper setup
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ "~/Pictures/wallpaper.jpg" ];
-      wallpaper = [ ",~/Pictures/wallpaper.jpg" ];
+      preload = [ "${config.stylix.image}" ];
+      wallpaper = [ ",${config.stylix.image}" ];
     };
   };
 
