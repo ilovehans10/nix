@@ -6,6 +6,7 @@
     ../modules/home-manager
     inputs.stylix.homeModules.stylix
     ../modules/stylix.nix
+    ../modules/home-manager/hyprland
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
