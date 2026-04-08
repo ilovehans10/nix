@@ -18,7 +18,7 @@
     # History configuration
     history = {
       size = 10000;
-      save = 10000;
+      save = 50000;
       path = "$ZDOTDIR/.zsh_history";
       ignoreDups = true;
       ignoreSpace = true;
@@ -35,6 +35,7 @@
 
     envExtra = ''
       ZVM_INIT_MODE="sourcing"
+      setopt no_global_rcs
     '';
 
     # Aliases
