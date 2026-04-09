@@ -114,6 +114,19 @@
 
   security.polkit.enable = true;
 
+  services.fail2ban.enable = true;
+
+  services.openssh = {
+    enable = true;
+    ports = [ 5522 ];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "hans" ];
+    };
+  };
+
   security.sudo = {
     enable = true;
     extraConfig = ''
