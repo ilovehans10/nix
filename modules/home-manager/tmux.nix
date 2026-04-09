@@ -9,6 +9,12 @@
     sensibleOnTop = true;
     plugins = with pkgs; [
       tmuxPlugins.catppuccin
+      {
+        plugin = tmuxPlugins.battery;
+        extraConfig = ''
+          set-option -g status-right "#{?client_prefix,[PREFIX] ,} #h #{battery_percentage} #{battery_remain} %H:%M %d-%a"
+        '';
+      }
       tmuxPlugins.open
       {
         plugin = tmuxPlugins.resurrect;
@@ -53,11 +59,6 @@
       bind-key -T copy-mode-vi 'C-k' select-pane -U
       bind-key -T copy-mode-vi 'C-l' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
-
-      # set my custom status bar
-      set-option -g status-right "#{?client_prefix,[PREFIX] ,}"
-      set-option -ag status-right "#h "
-      set-option -ag status-right "%H:%M %d-%a"
     '';
   };
 }

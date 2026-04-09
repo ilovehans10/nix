@@ -166,6 +166,7 @@
 
   environment.systemPackages = with pkgs; [
     # Core system tools
+    acpi
     bc
     bottom
     curl
