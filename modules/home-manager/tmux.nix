@@ -12,6 +12,7 @@
       {
         plugin = tmuxPlugins.battery;
         extraConfig = ''
+          set-option -g @batt_remain_short 'true'
           set-option -g status-right "#{?client_prefix,[PREFIX] ,} #h #{battery_percentage} #{battery_remain} %H:%M %d-%a"
         '';
       }
