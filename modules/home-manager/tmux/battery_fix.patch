@@ -1,0 +1,13 @@
+diff --git a/scripts/helpers.sh b/scripts/helpers.sh
+index c63dac9..79c3bf8 100755
+--- a/scripts/helpers.sh
++++ b/scripts/helpers.sh
+@@ -24,7 +24,7 @@ is_chrome() {
+ 
+ is_wsl() {
+ 	version=$(</proc/version)
+-	if [[ "$version" == *"Linux"* || "$version" == *"Microsoft"* || "$version" == *"microsoft"* ]]; then
++	if [[ "$version" ==  *"Microsoft"* || "$version" == *"microsoft"* ]]; then
+ 		return 0
+ 	else
+ 		return 1
