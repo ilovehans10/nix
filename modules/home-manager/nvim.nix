@@ -13,6 +13,7 @@
       pkg-config
       # Formatters and LSP binaries
       unstable.stylua
+      alejandra
       lua-language-server
       rust-analyzer
       # Runtime dependencies

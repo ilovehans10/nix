@@ -513,6 +513,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		javascript = { "prettier" },
+		nix = { "alejandra" },
 	},
 })
 vim.keymap.set("", "<leader>f", function()
