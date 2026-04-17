@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+nix_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.nix$' || true)
+
+if [ -z "$nix_files" ]; then
+  exit 0
+fi
+
+nix fmt $nix_files
+git add $nix_files
