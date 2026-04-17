@@ -173,6 +173,7 @@
     hyprpicker
     hyprshot
     jq
+    libnotify
     lsd
     nh
     pwvucontrol
