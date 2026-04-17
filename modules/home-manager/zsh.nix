@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -180,7 +185,8 @@
         # Cleanup
         unset FRESHSHELL
       '';
-    in lib.mkMerge [ zshConfigEarlyInit zshConfig ];
+    in
+      lib.mkMerge [zshConfigEarlyInit zshConfig];
 
     # Local variables for different configurations
     localVariables = {

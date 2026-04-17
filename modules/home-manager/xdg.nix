@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   xdg = {
     enable = true;
     mime.enable = true;
@@ -10,8 +9,8 @@
     };
     portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-      configPackages = [ pkgs.hyprland ];
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      configPackages = [pkgs.hyprland];
     };
   };
 }

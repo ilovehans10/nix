@@ -3,8 +3,7 @@
   outputs,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ../../modules/home-manager
     ../../modules/home-manager/hyprland

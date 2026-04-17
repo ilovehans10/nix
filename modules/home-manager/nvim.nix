@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   xdg.configFile."nvim/init.lua".source = ./nvim/init.lua;
 
   programs.neovim = {
@@ -25,7 +25,7 @@
       nodejs_24
     ];
 
-    extraLuaPackages = ls: with ls; [ luarocks ];
+    extraLuaPackages = ls: with ls; [luarocks];
 
     plugins = with pkgs.vimPlugins; [
       # Theme
@@ -66,13 +66,14 @@
       friendly-snippets
 
       # Treesitter — grammars installed by Nix, no :TSUpdate or ensure_installed needed
-      (nvim-treesitter.withPlugins (p: with p; [
-        bash
-        c_sharp
-        lua
-        nix
-        vimdoc
-      ]))
+      (nvim-treesitter.withPlugins (p:
+        with p; [
+          bash
+          c_sharp
+          lua
+          nix
+          vimdoc
+        ]))
       nvim-treesitter-context
 
       # Formatting

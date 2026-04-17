@@ -2,8 +2,7 @@
   inputs,
   outputs,
   ...
-}:
-{
+}: {
   imports = [
     ../../modules/home-manager
     inputs.stylix.homeModules.stylix

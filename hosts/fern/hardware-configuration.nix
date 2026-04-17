@@ -1,10 +1,14 @@
 # Placeholder — replace with output of `sudo nixos-generate-config` on the server.
-{ lib, modulesPath, ... }: {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+{
+  lib,
+  modulesPath,
+  ...
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot.loader.grub = {
     enable = true;
-    devices = [ "/dev/sda" ];
+    devices = ["/dev/sda"];
   };
 
   fileSystems."/" = {

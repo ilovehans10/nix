@@ -6,9 +6,8 @@
   lib,
   modulesPath,
   ...
-}:
-{
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot.loader.grub = {
     enable = true;
@@ -18,7 +17,7 @@
     efiInstallAsRemovable = true;
     mirroredBoots = [
       {
-        devices = [ "nodev" ];
+        devices = ["nodev"];
         path = "/boot";
       }
     ];
@@ -29,9 +28,9 @@
     "thunderbolt"
     "nvme"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-intel"];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "zpool/root";
@@ -62,7 +61,7 @@
     fsType = "zfs";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/03cc8afa-fd99-4361-a6e8-e9e8b92a7a03"; } ];
+  swapDevices = [{device = "/dev/disk/by-uuid/03cc8afa-fd99-4361-a6e8-e9e8b92a7a03";}];
 
   networking.useDHCP = lib.mkDefault true;
 

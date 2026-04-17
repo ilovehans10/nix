@@ -1,4 +1,8 @@
-{ lib, config, ... }: {
+{
+  lib,
+  config,
+  ...
+}: {
   options.myConfig.desktop.enable = lib.mkEnableOption "desktop environment (Waybar, Hyprpaper, notifications)";
 
   config = lib.mkIf config.myConfig.desktop.enable {
@@ -17,8 +21,8 @@
     services.hyprpaper = {
       enable = true;
       settings = {
-        preload = [ "${config.stylix.image}" ];
-        wallpaper = [ ",${config.stylix.image}" ];
+        preload = ["${config.stylix.image}"];
+        wallpaper = [",${config.stylix.image}"];
       };
     };
 

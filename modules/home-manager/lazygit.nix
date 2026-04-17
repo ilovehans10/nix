@@ -1,5 +1,9 @@
 # Lazygit is a simple terminal UI for git commands.
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.lazygit = {
     enable = true;
     settings = lib.mkForce {

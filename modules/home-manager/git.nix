@@ -1,17 +1,20 @@
-{ lib, pkgs, ... }: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.git = {
     enable = true;
     settings = {
       user.email = "hanandlia@gmail.com";
       user.name = "Hans Larsson";
-      gpg = { format = "ssh"; };
+      gpg = {format = "ssh";};
       "gpg \"ssh\"" = {
         program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
       };
-      commit = { gpgsign = true; };
+      commit = {gpgsign = true;};
       user = {
-        signingKey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0zfpzv87Do8FuepBA1r6PbibGI94dCS+STwv2B5WJN";
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0zfpzv87Do8FuepBA1r6PbibGI94dCS+STwv2B5WJN";
       };
       merge.conflictStyle = "diff3";
       push.default = "simple"; # Match modern push behavior

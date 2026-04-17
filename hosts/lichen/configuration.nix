@@ -5,8 +5,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ../../modules/nixos
     inputs.stylix.nixosModules.stylix
@@ -29,19 +28,17 @@
     };
   };
 
-  nix =
-    let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
-    {
-      settings = {
-        experimental-features = "nix-command flakes";
-        nix-path = config.nix.nixPath;
-      };
-      channel.enable = false;
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  nix = let
+    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  in {
+    settings = {
+      experimental-features = "nix-command flakes";
+      nix-path = config.nix.nixPath;
     };
+    channel.enable = false;
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  };
 
   networking.hostName = "lichen";
   networking.hostId = "74e2c635";
@@ -52,7 +49,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver = {
-    excludePackages = with pkgs; [ xterm ];
+    excludePackages = with pkgs; [xterm];
     enable = true;
   };
 
@@ -61,12 +58,12 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = [ "hans" ];
+    polkitPolicyOwners = ["hans"];
   };
 
   programs.steam = {
     enable = true;
-    extraPackages = with pkgs; [ nss ];
+    extraPackages = with pkgs; [nss];
   };
 
   programs.zsh.enable = true;
@@ -94,12 +91,12 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 5522 ];
+    ports = [5522];
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = [ "hans" ];
+      AllowUsers = ["hans"];
     };
   };
 
@@ -126,7 +123,7 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
 
   environment.variables = {
     GTK_THEME = "WhiteSur-Dark";

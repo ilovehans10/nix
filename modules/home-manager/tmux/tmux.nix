@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   options.myConfig.tmux = {
     enable = lib.mkEnableOption "tmux terminal multiplexer";
     battery.enable = lib.mkEnableOption "battery status in the tmux status bar";
@@ -19,8 +18,7 @@
       terminal = "screen-256color";
       prefix = "C-Space";
       sensibleOnTop = true;
-      plugins =
-        with pkgs;
+      plugins = with pkgs;
         [
           tmuxPlugins.catppuccin
         ]

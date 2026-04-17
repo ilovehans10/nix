@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   options.myConfig.libreoffice.enable = lib.mkEnableOption "LibreOffice office suite";
 
   config = lib.mkIf config.myConfig.libreoffice.enable {
