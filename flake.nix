@@ -66,10 +66,11 @@
       nixosConfigurations = {
         lichen = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
-          ];
+          modules = [ ./hosts/lichen/configuration.nix ];
+        };
+        fern = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/fern/configuration.nix ];
         };
       };
 
@@ -77,13 +78,14 @@
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "hans@lichen" = home-manager.lib.homeManagerConfiguration {
-          pkgs =
-            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
-          ];
+          modules = [ ./hosts/lichen/home.nix ];
+        };
+        "hans@fern" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/fern/home.nix ];
         };
       };
     };
