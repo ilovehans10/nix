@@ -122,6 +122,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_augroup("changedirectory", {})
 vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", group = "changedirectory", command = [[ silent! lcd %:p:h ]] })
 
+vim.api.nvim_create_augroup("SpellCheck", {})
+vim.api.nvim_create_autocmd("FileType", {
+	group = "SpellCheck",
+	pattern = { "markdown" },
+	callback = function()
+		vim.opt_local.spell = true
+	end,
+})
+
 -- =============================================================================
 -- Plugin configuration
 -- Plugins are installed by Nix (home-manager programs.neovim.plugins).
