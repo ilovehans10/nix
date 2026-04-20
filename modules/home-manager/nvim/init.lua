@@ -63,8 +63,8 @@ keyset("i", "kj", "<ESC>")
 keyset("i", "kk", "<ESC>")
 
 -- allow inserting line before/after current
-keyset("n", "<leader>j", ":set paste<CR>m`o<ESC>``:set nopaste<CR>") -- insert line after current
-keyset("n", "<leader>k", ":set paste<CR>m`O<ESC>``:set nopaste<CR>") -- insert line before current
+keyset("n", "<leader>j", "<CMD>normal ] <CR>") -- insert line after current
+keyset("n", "<leader>k", "<CMD>normal [ <CR>") -- insert line before current
 keyset("n", "<leader>w", "g<C-g>") -- show word count for buffer
 keyset("v", "<leader>w", "g<C-g>") -- show word count for visual selection
 keyset("n", "<leader>ev", (":tab drop " .. vim.fn.expand("<sfile>:p") .. "<CR>"))
