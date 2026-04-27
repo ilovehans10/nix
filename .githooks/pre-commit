@@ -7,5 +7,13 @@ if [ -z "$nix_files" ]; then
   exit 0
 fi
 
+# Skip formatting when any staged nix file is only partially staged to avoid
+# promoting unstaged hunks into the commit via git add.
+partial=$(git diff --name-only | grep '\.nix$' | grep -Fx "$nix_files" || true)
+if [ -n "$partial" ]; then
+  echo "pre-commit: partial staging detected — skipping nix fmt to preserve hunks"
+  exit 0
+fi
+
 nix fmt $nix_files
 git add $nix_files
