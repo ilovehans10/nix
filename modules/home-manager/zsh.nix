@@ -46,7 +46,6 @@
     # Aliases
     shellAliases = {
       # Text editors
-      editnixconf = "sudo -e /etc/nixos/configuration.nix";
       vi = "nvim";
       vim = "nvim";
       vimdiff = "nvim -d";
