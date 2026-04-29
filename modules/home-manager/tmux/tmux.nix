@@ -21,13 +21,31 @@
       plugins = with pkgs;
         [
           tmuxPlugins.catppuccin
+          {
+            plugin = tmuxPlugins.mkTmuxPlugin {
+              pluginName = "suspend";
+              version = "unstable-2024-01-15";
+              src = fetchFromGitHub {
+                owner = "MunifTanjim";
+                repo = "tmux-suspend";
+                rev = "1a2f806666e0bfed37535372279fa00d27d50d14";
+                hash = "sha256-+1fKkwDmr5iqro0XeL8gkjOGGB/YHBD25NG+w3iW+0g=";
+              };
+            };
+            extraConfig = ''
+              set -g @suspend_key "F12"
+              set -g @hostname_bg "#cba6f7"
+              set -g @suspend_suspended_options " @mode_indicator_custom_prompt:: SUSPENDED , @hostname_bg::#f38ba8, "
+              run-shell 'tmux set-option @mode_indicator_custom_prompt " $(hostname -s) "'
+            '';
+          }
         ]
         ++ lib.optionals config.myConfig.tmux.battery.enable [
           {
             plugin = tmuxPlugins.battery;
             extraConfig = ''
               set-option -g @batt_remain_short 'true'
-              set-option -g status-right "#{?client_prefix,[PREFIX] ,} #h #{battery_percentage} #{battery_remain} %H:%M %d-%a"
+              set-option -g status-right "#{?client_prefix,[PREFIX] ,}#[bg=#f9e2af,fg=#1e1e2e] #{battery_percentage}#{?#{battery_remain}, #{battery_remain},} #[bg=#89b4fa,fg=#1e1e2e] %d-%a %H:%M #[bg=#{@hostname_bg},fg=#1e1e2e] #{@mode_indicator_custom_prompt} "
             '';
           }
         ]
@@ -50,9 +68,13 @@
         set-option -sa terminal-features ',screen-256color:RGB' # turn on tmux color support
         set-option -g display-time 4000 # make tmux notifications last 4 seconds
         set-option -g allow-passthrough on
+        set-option -g status-right-length 65
+
+        set-option -g automatic-rename on
+        set-option -g automatic-rename-format "#{?#{==:#{pane_current_command},zsh},#{=15:b:pane_current_path},#{pane_current_command}}"
 
         ${lib.optionalString (!config.myConfig.tmux.battery.enable) ''
-          set-option -g status-right "#{?client_prefix,[PREFIX] ,} #h %H:%M %d-%a"
+          set-option -g status-right "#{?client_prefix,[PREFIX] ,}#[bg=#89b4fa,fg=#1e1e2e] %d-%a %H:%M #[bg=#{@hostname_bg},fg=#1e1e2e] #{@mode_indicator_custom_prompt} "
         ''}
 
         bind-key r source-file $HOME/.config/tmux/tmux.conf # reload tmux config on <C-Space>r
