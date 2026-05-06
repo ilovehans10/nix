@@ -40,6 +40,8 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
+  boot.loader.grub.theme = pkgs.lenovo-thinkpad-efi-grub-theme;
+
   networking.hostName = "lichen";
   networking.hostId = "74e2c635";
   networking.networkmanager.enable = true;
