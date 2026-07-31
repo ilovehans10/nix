@@ -191,6 +191,7 @@
     localVariables = {
       # FZF configuration
       FZF_DEFAULT_COMMAND = "rg --files --hidden --follow --glob '!.git'";
+      WORDCHARS = "$(echo $WORDCHARS | tr -d '/')";
     };
   };
 
