@@ -179,6 +179,8 @@
         unalias run-help 2>/dev/null || true
         autoload run-help
 
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
         source $HOME/.config/zsh/.p10k.zsh
 
         # Cleanup
