@@ -5,7 +5,7 @@
     ./desktop.nix
     ./git.nix
     ./lazygit.nix
-    ./nvim.nix
+    ./nvim
     ./ssh.nix
     ./tmux
     ./vicinae.nix
