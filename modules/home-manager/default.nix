@@ -6,6 +6,7 @@
     ./git.nix
     ./lazygit.nix
     ./nvim.nix
+    ./ssh.nix
     ./tmux
     ./vicinae.nix
     ./xdg.nix
