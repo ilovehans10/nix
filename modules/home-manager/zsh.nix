@@ -85,6 +85,10 @@
       top10 = "print -l \${(o)history%% *} | uniq -c | sort -nr | head -n 10";
     };
 
+    siteFunctions = {
+      vpn = "nmcli c $@ Lichen";
+    };
+
     # Zsh plugins managed by Nix
     plugins = [
       {
