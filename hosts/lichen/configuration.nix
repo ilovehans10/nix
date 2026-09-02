@@ -55,7 +55,11 @@
     enable = true;
   };
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    # UWSM makes Hyprland activate graphical-session.target
+    withUWSM = true;
+  };
 
   programs._1password.enable = true;
   programs._1password-gui = {
