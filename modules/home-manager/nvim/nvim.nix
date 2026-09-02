@@ -67,7 +67,8 @@
       friendly-snippets
 
       # Treesitter — grammars installed by Nix, no :TSUpdate or ensure_installed needed
-      (nvim-treesitter.withPlugins (p:
+      # Pinned to nvim-treesitter-legacy until I write the migration to the new API
+      (nvim-treesitter-legacy.withPlugins (p:
         with p; [
           bash
           c_sharp
