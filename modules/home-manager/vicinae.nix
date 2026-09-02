@@ -18,7 +18,11 @@
       launcher_window = {opacity = 0.98;};
     };
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-      bluetooth
+      # bluetooth extension is intentionally excluded from vicinae-extensions'
+      # own flake outputs (see its flake.nix `removeAttrs` list) because it
+      # currently fails to build: node-gyp can't build the native `usocket`
+      # module that its dbus-next dependency needs. Not something fixable
+      # from this flake; re-add once upstream packages it again.
       nix
       power-profile
       wifi-commander

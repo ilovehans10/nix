@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,11 +19,21 @@
 
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:nix-community/stylix";
+      # Pinned just before stylix's kmscon target started using
+      # `services.kmscon.config` (nix-community/stylix#b4c8f3a, 2026-06-04) and
+      # well before its regreet target moved from `programs.regreet` to
+      # `services.displayManager.regreet` (nix-community/stylix#9aa6eda,
+      # 2026-08-02). Both changes chase nixpkgs module reorganizations that
+      # only landed on nixpkgs master/unstable and have not been backported to
+      # the nixos-26.05 release branch. Unpinning this (or bumping past either
+      # commit) will break `nixosConfigurations` with an
+      # "option ... does not exist" error for kmscon or regreet respectively,
+      # until nixos-26.05 gains those options or stylix adds compat shims.
+      url = "github:nix-community/stylix/525965744b770af79c985ae5c43c65e441dc8b29";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
