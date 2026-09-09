@@ -139,6 +139,9 @@
     HYPRCURSOR_SIZE = "24";
   };
 
+  # required for home-manager's dconf.settings to apply
+  programs.dconf.enable = true;
+
   xdg.mime.defaultApplications = {
     "image/jpg" = "sxiv.desktop";
     "image/jpeg" = "sxiv.desktop";

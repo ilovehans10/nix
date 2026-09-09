@@ -6,6 +6,12 @@
   options.myConfig.desktop.enable = lib.mkEnableOption "desktop environment (Waybar, Hyprpaper, notifications)";
 
   config = lib.mkIf config.myConfig.desktop.enable {
+    # portal/gsettings dark-mode signal for apps that pick light/dark by prefers-color-scheme
+    dconf.settings."org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "WhiteSur-Dark";
+    };
+
     # Waybar setup
     programs.waybar = {
       enable = true;
