@@ -195,6 +195,7 @@
     discord
     firefox
     kitty
+    kiwix
     localsend
     qalculate-qt
 
