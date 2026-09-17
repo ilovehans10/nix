@@ -14,5 +14,9 @@
     ./yazi.nix
     ./zsh.nix
   ];
-  programs.gpg.enable = true;
+  programs = {
+    gpg.enable = true;
+    bat.enable = true;
+    nh.enable = true;
+  };
 }

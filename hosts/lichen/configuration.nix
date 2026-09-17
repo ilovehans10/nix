@@ -169,7 +169,6 @@
     tmux
 
     # Shell and utilities
-    bat
     blueman
     brightnessctl
     dig
@@ -181,7 +180,6 @@
     jq
     libnotify
     lsd
-    nh
     pwvucontrol
     ripgrep
     waybar
