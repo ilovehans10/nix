@@ -42,6 +42,9 @@
 
   boot.loader.grub.theme = pkgs.lenovo-thinkpad-efi-grub-theme;
 
+  # resume target for hibernate; matches the swapDevices entry in hardware-configuration.nix
+  boot.resumeDevice = "/dev/disk/by-uuid/03cc8afa-fd99-4361-a6e8-e9e8b92a7a03";
+
   networking.hostName = "lichen";
   networking.hostId = "74e2c635";
   networking.networkmanager.enable = true;
