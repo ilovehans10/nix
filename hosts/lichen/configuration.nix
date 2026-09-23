@@ -185,7 +185,6 @@
     lsd
     pwvucontrol
     ripgrep
-    waybar
     wl-clipboard
     yazi
     zoxide

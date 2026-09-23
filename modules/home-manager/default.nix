@@ -10,6 +10,8 @@
     ./ssh.nix
     ./tmux
     ./vicinae.nix
+    ./waybar.nix
+    ./wlogout.nix
     ./xdg.nix
     ./yazi.nix
     ./zsh.nix

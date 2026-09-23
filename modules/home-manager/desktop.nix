@@ -12,12 +12,6 @@
       gtk-theme = "WhiteSur-Dark";
     };
 
-    # Waybar setup
-    programs.waybar = {
-      enable = true;
-      systemd.enable = true;
-    };
-
     # wallpaper collection symlink
     home.file."Pictures/wallpapers" = {
       source = ../../assets/wallpapers;
@@ -40,7 +34,56 @@
     # password prompt setup
     services.hyprpolkitagent.enable = true;
 
-    # enable sway-nc for notifications
-    services.swaync.enable = true;
+    # sway-nc handles notifications plus the volume/brightness/bluetooth control center
+    services.swaync = {
+      enable = true;
+      settings = {
+        positionX = "right";
+        positionY = "top";
+        control-center-width = 400;
+        widgets = [
+          "title"
+          "dnd"
+          "buttons-grid"
+          "volume"
+          "backlight"
+          "mpris"
+          "notifications"
+        ];
+        widget-config = {
+          title = {
+            text = "Notifications";
+            clear-all-button = true;
+            button-text = "Clear";
+          };
+          dnd.text = "Do not disturb";
+          volume = {
+            label = "󰕾";
+            show-per-app = true;
+          };
+          backlight = {
+            label = "󰃠";
+            device = "intel_backlight";
+          };
+          buttons-grid = {
+            actions = [
+              {
+                label = "󰂯";
+                command = "blueman-manager";
+              }
+              {
+                label = "󰤨";
+                command = "vicinae toggle";
+              }
+              {
+                label = "󰐥";
+                command = "wlogout";
+              }
+            ];
+          };
+          notifications.vexpand = true;
+        };
+      };
+    };
   };
 }
