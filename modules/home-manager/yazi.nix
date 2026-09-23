@@ -88,7 +88,7 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
-    shellWrapperName = "yazi";
+    shellWrapperName = "yy";
     settings = {
       mgr = {
         sort_dir_first = true;
