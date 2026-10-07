@@ -6,6 +6,7 @@
         general = {
           after_sleep_cmd = "hyprctl dispatch dpms on";
           lock_cmd = "sudo -k && pidof hyprlock || hyprlock";
+          before_sleep_cmd = "loginctl lock-session";
         };
         listener = [
           {
