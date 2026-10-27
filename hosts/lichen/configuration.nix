@@ -136,10 +136,6 @@
 
   environment.variables = {
     GTK_THEME = "WhiteSur-Dark";
-    XCURSOR_THEME = "WhiteSur-Dark";
-    XCURSOR_SIZE = "24";
-    HYPRCURSOR_THEME = "WhiteSurDark";
-    HYPRCURSOR_SIZE = "24";
   };
 
   # required for home-manager's dconf.settings to apply

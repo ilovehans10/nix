@@ -30,16 +30,13 @@
     username = "hans";
     homeDirectory = "/home/hans";
     pointerCursor = {
-      name = "Dracula-cursors";
-      package = pkgs.dracula-theme;
+      name = "catppuccin-mocha-dark-cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
       size = 24;
 
       gtk.enable = true;
-
-      x11 = {
-        enable = true;
-        defaultCursor = "Dracula-cursors";
-      };
+      hyprcursor.enable = true;
+      x11.enable = true;
     };
   };
 
